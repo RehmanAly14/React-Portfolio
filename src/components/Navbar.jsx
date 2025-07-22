@@ -23,6 +23,15 @@ const Navbar = () => {
     };
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const menuItems = [
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
@@ -94,33 +103,54 @@ const Navbar = () => {
                 aria-hidden="true"
               />
               <motion.div
-                initial={{ opacity: 0, x: '100%' }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: '100%' }}
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
                 transition={{ type: 'tween', duration: 0.3 }}
-                className="fixed top-0 right-0 h-screen w-[250px] bg-tertiary shadow-xl p-6 md:hidden"
+                className="fixed top-0 right-0 h-screen w-[250px] bg-tertiary/95 backdrop-blur-lg shadow-xl p-6 md:hidden"
               >
-                <div className="flex flex-col space-y-6 mt-16">
-                  {menuItems.map((item, index) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Link
-                        to={item.to}
-                        spy={true}
-                        smooth={true}
-                        offset={-70}
-                        duration={500}
-                        className="nav-link text-lg block"
-                        onClick={() => setIsOpen(false)}
+                <div className="flex flex-col h-full">
+                  {/* Close button for mobile menu */}
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="absolute top-4 right-4 text-secondary hover:text-secondary/80 transition-colors text-2xl focus:outline-none"
+                    aria-label="Close menu"
+                  >
+                    <HiX />
+                  </button>
+
+                  {/* Mobile menu items */}
+                  <div className="flex flex-col space-y-6 mt-16">
+                    {menuItems.map((item, index) => (
+                      <motion.div
+                        key={item.name}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
                       >
-                        {item.name}
-                      </Link>
-                    </motion.div>
-                  ))}
+                        <Link
+                          to={item.to}
+                          spy={true}
+                          smooth={true}
+                          offset={-70}
+                          duration={500}
+                          className="text-lg text-textPrimary hover:text-secondary transition-colors duration-300 block"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Mobile menu footer */}
+                  <div className="mt-auto">
+                    <div className="border-t border-secondary/20 pt-6">
+                      <p className="text-sm text-textSecondary text-center">
+                        Let's build something amazing together
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </>

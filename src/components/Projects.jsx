@@ -28,7 +28,6 @@ const Projects = () => {
         'Responsive design for all devices'
       ],
       github: 'https://github.com/RehmanAly14/BLOG-WEBSITE.git',
-      
     },
     {
       title: 'URL Shortener',
@@ -49,7 +48,6 @@ const Projects = () => {
         'User dashboard'
       ],
       github: 'https://github.com/RehmanAly14/Short-UrL/tree/1c01c94680cd4dfa4b86a44ff9244a534201982c',
-      
     },
   ];
 
@@ -57,8 +55,8 @@ const Projects = () => {
     <section id="projects" className="section-padding relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-tertiary via-primary to-tertiary">
-        <div className="absolute w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl animate-pulse -top-64 -right-64"></div>
-        <div className="absolute w-[400px] h-[400px] bg-secondary/10 rounded-full blur-2xl animate-pulse delay-300 bottom-0 -left-32"></div>
+        <div className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-secondary/5 rounded-full blur-3xl animate-pulse -top-64 -right-64"></div>
+        <div className="absolute w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-secondary/10 rounded-full blur-2xl animate-pulse delay-300 bottom-0 -left-32"></div>
       </div>
 
       <div className="container mx-auto relative z-10">
@@ -67,13 +65,13 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="heading">Featured Projects</h2>
           <p className="subheading">Some Things I've Built</p>
         </motion.div>
 
-        <div className="grid gap-16">
+        <div className="grid gap-8 sm:gap-16">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -83,42 +81,41 @@ const Projects = () => {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="grid md:grid-cols-2 gap-8 items-center bg-primary/50 backdrop-blur-sm rounded-2xl p-8 border border-secondary/10">
-               
-                <div className="relative aspect-video rounded-xl overflow-hidden">
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 items-start lg:items-center bg-primary/50 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-secondary/10">
+                {/* Project Image */}
+                <div className="relative aspect-video w-full rounded-xl overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary group-hover:opacity-80 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary opacity-50 group-hover:opacity-80 transition-opacity duration-300"></div>
                   
-                  <div className="absolute inset-0 flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center gap-6 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
-                      className="bg-tertiary p-3 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors duration-300"
+                      className="bg-tertiary p-2 sm:p-3 rounded-full text-secondary hover:bg-secondary hover:text-primary transition-colors duration-300"
                     >
-                      <FaGithub className="text-2xl" />
+                      <FaGithub className="text-xl sm:text-2xl" />
                     </motion.a>
-                   
                   </div>
                 </div>
 
                 {/* Project Info */}
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-textPrimary group-hover:text-secondary transition-colors duration-300">
+                <div className="space-y-4 sm:space-y-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-textPrimary group-hover:text-secondary transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-textSecondary">
+                  <p className="text-sm sm:text-base text-textSecondary">
                     {project.description}
                   </p>
 
                   {/* Features List */}
-                  <div className="space-y-2">
-                    <h4 className="text-lg font-semibold text-textPrimary">Key Features:</h4>
+                  <div className="space-y-2 sm:space-y-3">
+                    <h4 className="text-base sm:text-lg font-semibold text-textPrimary">Key Features:</h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {project.features.map((feature, featureIndex) => (
                         <motion.li
@@ -127,7 +124,7 @@ const Projects = () => {
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
                           viewport={{ once: true }}
-                          className="flex items-center gap-2 text-textSecondary"
+                          className="flex items-center gap-2 text-sm sm:text-base text-textSecondary"
                         >
                           <span className="text-secondary">▹</span>
                           {feature}
@@ -137,7 +134,7 @@ const Projects = () => {
                   </div>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-2 sm:gap-4">
                     {project.technologies.map((tech, techIndex) => (
                       <motion.div
                         key={tech.name}
@@ -145,10 +142,10 @@ const Projects = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: techIndex * 0.1 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-2 bg-tertiary px-3 py-1 rounded-full group-hover:bg-secondary/10 transition-colors duration-300"
+                        className="flex items-center gap-1.5 sm:gap-2 bg-tertiary px-2 sm:px-3 py-1 rounded-full group-hover:bg-secondary/10 transition-colors duration-300"
                       >
-                        <span className="text-secondary text-lg">{tech.icon}</span>
-                        <span className="text-textSecondary text-sm">{tech.name}</span>
+                        <span className="text-secondary text-base sm:text-lg">{tech.icon}</span>
+                        <span className="text-textSecondary text-xs sm:text-sm">{tech.name}</span>
                       </motion.div>
                     ))}
                   </div>

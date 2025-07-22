@@ -26,15 +26,15 @@ const FloatingSkill = ({ icon, name, index, containerHeight }) => {
           ease: "easeInOut"
         }
       }}
-      className="absolute flex items-center gap-2 bg-gradient-to-r from-tertiary/30 to-transparent backdrop-blur-sm px-6 py-3 rounded-full border border-secondary/20"
+      className="absolute hidden md:flex items-center gap-2 bg-gradient-to-r from-tertiary/30 to-transparent backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-secondary/20"
       style={{
         top: yOffset,
         left: "-100px",
         zIndex: 1
       }}
     >
-      <span className="text-2xl text-secondary">{icon}</span>
-      <span className="text-textSecondary text-sm font-medium">{name}</span>
+      <span className="text-xl sm:text-2xl text-secondary">{icon}</span>
+      <span className="text-textSecondary text-xs sm:text-sm font-medium">{name}</span>
     </motion.div>
   );
 };
@@ -51,23 +51,23 @@ const SkillCard = ({ skill, index }) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group relative"
     >
-      <div className="bg-tertiary/30 backdrop-blur-sm rounded-xl p-6 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(100,255,218,0.1)] transform hover:-translate-y-1">
+      <div className="bg-tertiary/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-secondary/10 hover:border-secondary/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(100,255,218,0.1)] transform hover:-translate-y-1">
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-secondary/10 rounded-lg transform group-hover:scale-110 transition-all duration-300">
-              <span className="text-2xl text-secondary">{skill.icon}</span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-1.5 sm:p-2 bg-secondary/10 rounded-lg transform group-hover:scale-110 transition-all duration-300">
+              <span className="text-xl sm:text-2xl text-secondary">{skill.icon}</span>
             </div>
             <div>
-              <h4 className="text-textPrimary font-semibold">{skill.name}</h4>
-              <p className="text-sm text-textSecondary">{skill.years}</p>
+              <h4 className="text-sm sm:text-base text-textPrimary font-semibold">{skill.name}</h4>
+              <p className="text-xs sm:text-sm text-textSecondary">{skill.years}</p>
             </div>
           </div>
-          <span className="text-secondary font-mono text-sm bg-secondary/5 px-3 py-1 rounded-full">
+          <span className="text-secondary font-mono text-xs sm:text-sm bg-secondary/5 px-2 sm:px-3 py-1 rounded-full">
             {skill.level}%
           </span>
         </div>
         
-        <div className="h-2 bg-tertiary/50 rounded-full overflow-hidden">
+        <div className="h-1.5 sm:h-2 bg-tertiary/50 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
@@ -81,9 +81,9 @@ const SkillCard = ({ skill, index }) => {
 };
 
 const CategoryTitle = ({ icon, title }) => (
-  <div className="inline-flex items-center gap-3 bg-tertiary/30 backdrop-blur-sm px-6 py-3 rounded-full border border-secondary/20 mb-8">
-    {icon}
-    <h3 className="text-xl font-bold text-textPrimary">{title}</h3>
+  <div className="inline-flex items-center gap-2 sm:gap-3 bg-tertiary/30 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-secondary/20 mb-6 sm:mb-8">
+    <span className="text-2xl sm:text-3xl text-secondary">{icon}</span>
+    <h3 className="text-lg sm:text-xl font-bold text-textPrimary">{title}</h3>
   </div>
 );
 
@@ -108,7 +108,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Frontend Development",
-      icon: <FaCode className="text-3xl text-secondary" />,
+      icon: <FaCode />,
       skills: [
         { name: 'React.js', level: 90, icon: <FaReact />, years: '3 Years' },
         { name: 'Next.js', level: 85, icon: <SiNextdotjs />, years: '2 Years' },
@@ -120,7 +120,7 @@ const Skills = () => {
     },
     {
       title: "Backend Development",
-      icon: <FaNodeJs className="text-3xl text-secondary" />,
+      icon: <FaNodeJs />,
       skills: [
         { name: 'Node.js', level: 85, icon: <FaNodeJs />, years: '3 Years' },
         { name: 'Express.js', level: 85, icon: <SiExpress />, years: '3 Years' },
@@ -139,12 +139,12 @@ const Skills = () => {
     <section 
       ref={sectionRef}
       id="skills" 
-      className="relative min-h-screen py-20 px-4 md:px-8 lg:px-16 overflow-hidden bg-gradient-to-b from-primary via-tertiary to-primary"
+      className="relative min-h-screen section-padding overflow-hidden bg-gradient-to-b from-primary via-tertiary to-primary"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] top-0 -right-64"></div>
-        <div className="absolute w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[80px] bottom-0 -left-32"></div>
+        <div className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-secondary/5 rounded-full blur-[100px] top-0 -right-64"></div>
+        <div className="absolute w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-secondary/10 rounded-full blur-[80px] bottom-0 -left-32"></div>
       </div>
 
       {/* Floating Skills Container */}
@@ -168,7 +168,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="heading">Skills & Expertise</h2>
           <p className="subheading max-w-2xl mx-auto">
@@ -176,7 +176,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-16 relative z-10">
+        <div className="grid gap-12 sm:gap-16 relative z-10">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -185,7 +185,7 @@ const Skills = () => {
               transition={{ duration: 0.5, delay: categoryIndex * 0.2 }}
             >
               <CategoryTitle icon={category.icon} title={category.title} />
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 {category.skills.map((skill, index) => (
                   <SkillCard key={skill.name} skill={skill} index={index} />
                 ))}
@@ -199,10 +199,10 @@ const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
         >
-          <h3 className="text-2xl font-semibold text-textPrimary mb-8">Development Tools</h3>
-          <div className="flex justify-center gap-8">
+          <h3 className="text-xl sm:text-2xl font-semibold text-textPrimary mb-6 sm:mb-8">Development Tools</h3>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8">
             {tools.map((tool, index) => (
               <motion.div
                 key={tool.name}
@@ -210,15 +210,15 @@ const Skills = () => {
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="flex flex-col items-center gap-2 group bg-tertiary/30 backdrop-blur-sm p-4 rounded-xl border border-secondary/10 hover:border-secondary/30 transition-all duration-300"
+                className="flex flex-col items-center gap-2 group bg-tertiary/30 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-secondary/10 hover:border-secondary/30 transition-all duration-300"
               >
-                <div className="text-3xl text-secondary group-hover:text-secondary/80 transition-colors duration-300">
+                <div className="text-2xl sm:text-3xl text-secondary group-hover:text-secondary/80 transition-colors duration-300">
                   {tool.icon}
                 </div>
-                <span className="text-textPrimary font-medium group-hover:text-secondary transition-colors duration-300">
+                <span className="text-sm sm:text-base text-textPrimary font-medium group-hover:text-secondary transition-colors duration-300">
                   {tool.name}
                 </span>
-                <span className="text-sm text-textSecondary">
+                <span className="text-xs sm:text-sm text-textSecondary">
                   {tool.description}
                 </span>
               </motion.div>

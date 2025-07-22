@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere } from '@react-three/drei';
 import { TypeAnimation } from 'react-type-animation';
 import img from '../../assests/IMG_20240408_005811_746.jpg';
 
@@ -31,46 +29,34 @@ const Home = () => {
     <section id="home" className="section-padding min-h-screen flex items-center relative overflow-hidden bg-gradient-to-b from-primary to-tertiary">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -top-48 -right-48 animate-pulse"></div>
-        <div className="absolute w-[300px] h-[300px] bg-secondary/10 rounded-full blur-2xl bottom-0 -left-20 animate-pulse delay-1000"></div>
+        <div className="absolute w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-secondary/5 rounded-full blur-3xl -top-48 -right-48 animate-pulse"></div>
+        <div className="absolute w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-secondary/10 rounded-full blur-2xl bottom-0 -left-20 animate-pulse delay-1000"></div>
       </div>
 
-      {/* Background Sphere */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-20">
-        <Canvas>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[2, 2, 2]} />
-          <Sphere args={[1, 100, 200]}>
-            <meshStandardMaterial color="#64FFDA" wireframe />
-          </Sphere>
-        </Canvas>
-      </div>
-
-      <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto relative z-10 px-4">
+        <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-3xl"
+            className="max-w-3xl text-center md:text-left mt-8 md:mt-0"
           >
             <motion.p
               variants={itemVariants}
-              className="text-secondary font-mono mb-4 text-lg"
+              className="text-secondary font-mono mb-2 sm:mb-4 text-base sm:text-lg"
             >
               Hi, my name is
             </motion.p>
             <motion.h1
               variants={itemVariants}
-              className="heading"
+              className="heading mb-2 sm:mb-4"
             >
               Rehman.
             </motion.h1>
             <motion.div
               variants={itemVariants}
-              className="subheading"
+              className="subheading mb-4 sm:mb-6"
             >
               <TypeAnimation
                 sequence={[
@@ -91,22 +77,21 @@ const Home = () => {
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="mt-6"
+              className="mt-4 sm:mt-6"
             >
-             <p className="text-textSecondary text-lg mb-8 max-w-xl">
-                  I'm a MERN Stack Developer specializing in building exceptional digital experiences.
-                  Currently, I'm focused on building accessible, human-centered products.
-                </p>
-              
+             <p className="text-textSecondary text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto md:mx-0">
+                I'm a MERN Stack Developer specializing in building exceptional digital experiences.
+                Currently, I'm focused on building accessible, human-centered products.
+              </p>
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="flex space-x-4"
+              className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start"
             >
-              <a href="#projects" className="btn-primary">
+              <a href="#projects" className="btn-primary w-full sm:w-auto text-center">
                 Check out my work!
               </a>
-              <a href="#contact" className="btn-primary bg-secondary/10">
+              <a href="#contact" className="btn-primary bg-secondary/10 w-full sm:w-auto text-center">
                 Get in touch
               </a>
             </motion.div>
@@ -117,9 +102,9 @@ const Home = () => {
             initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative group hidden lg:block"
+            className="relative group w-[250px] sm:w-[280px] md:w-[320px] lg:w-[380px] mx-auto"
           >
-            <div className="relative w-full max-w-md mx-auto aspect-square">
+            <div className="relative aspect-square">
               {/* Decorative Elements */}
               <div className="absolute inset-0 bg-secondary/20 rounded-2xl transform rotate-6 group-hover:rotate-12 transition-transform duration-300"></div>
               <div className="absolute inset-0 bg-tertiary rounded-2xl transform -rotate-6 group-hover:-rotate-12 transition-transform duration-300"></div>
@@ -145,7 +130,7 @@ const Home = () => {
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full blur-md"
+                className="absolute -top-4 -right-4 w-12 sm:w-16 md:w-20 h-12 sm:h-16 md:h-20 bg-secondary/20 rounded-full blur-md"
               ></motion.div>
               <motion.div
                 animate={{
@@ -156,7 +141,7 @@ const Home = () => {
                   repeat: Infinity,
                   repeatType: "reverse",
                 }}
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-secondary/30 rounded-full blur-md"
+                className="absolute -bottom-4 -left-4 w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16 bg-secondary/30 rounded-full blur-md"
               ></motion.div>
             </div>
           </motion.div>
