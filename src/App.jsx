@@ -10,19 +10,23 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col">
         <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Home />
-              <About />
-              <Skills />
-              <Projects />
-              <Contact />
-            </>
-          } />
-        </Routes>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={
+              <>
+                <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+                  <Home />
+                  <About />
+                  <Skills />
+                  <Projects />
+                  <Contact />
+                </div>
+              </>
+            } />
+          </Routes>
+        </main>
         <Footer />
       </div>
     </Router>

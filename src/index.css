@@ -5,31 +5,44 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply antialiased;
   }
 
   body {
-    @apply bg-primary text-textPrimary font-primary;
+    @apply bg-primary text-textPrimary font-primary overflow-x-hidden;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-20 px-4 md:px-16 lg:px-24;
+    @apply py-16 px-4 sm:py-20 sm:px-6 lg:py-24 lg:px-8;
   }
 
   .heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-textPrimary mb-6;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-textPrimary mb-4 sm:mb-6;
   }
 
   .subheading {
-    @apply text-xl md:text-2xl text-textSecondary mb-12;
+    @apply text-lg sm:text-xl md:text-2xl text-textSecondary mb-8 sm:mb-12;
   }
 
   .btn-primary {
-    @apply px-6 py-3 border-2 border-secondary text-secondary hover:bg-secondary/10 transition-all duration-300 rounded;
+    @apply px-4 py-2 sm:px-6 sm:py-3 border-2 border-secondary text-secondary 
+           hover:bg-secondary/10 active:bg-secondary/20 
+           transition-all duration-300 rounded 
+           focus:outline-none focus:ring-2 focus:ring-secondary/50;
   }
 
   .nav-link {
-    @apply text-textSecondary hover:text-secondary transition-colors duration-300;
+    @apply text-textSecondary hover:text-secondary 
+           transition-colors duration-300 
+           relative after:absolute after:bottom-0 after:left-0 
+           after:w-0 after:h-0.5 after:bg-secondary 
+           after:transition-all after:duration-300
+           hover:after:w-full;
+  }
+
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 } 
